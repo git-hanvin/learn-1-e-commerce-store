@@ -17,4 +17,12 @@ STARTS WITH BACKEND
         app.listen(PORT, () => {
             console.log("Server is running on http://localhost" + PORT);
         });
-6. 
+6. Make authentification
+    a. base code for router:
+        import express from "express";
+        const router = express.Router();
+        export default router
+    b. base code for controller:
+        just copy paste from the func that on auth.route.js
+        then back to auth.route.js then insert the name of const on that file
+        and dont forget to add .js in the end of import on controller
