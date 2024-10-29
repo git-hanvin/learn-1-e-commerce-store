@@ -1,0 +1,20 @@
+STARTS WITH BACKEND
+
+1. npm init -y (package.json)
+2. npm i express dotenv mongoose jsonwebtoken stripe cloudinary cookie-parser bcryptjs ioredis
+3. npm i nodemon -D
+4. on package.json changes:
+    a. the main to backend/server.js
+    b. changes the script to:
+        "dev": "nodemon backend/server.js" (this will restarting the file whenever you have some changes)
+        "start": "node backend/server.js"
+    c. add | "type": "module",
+5. to start the server just make a .env file then on server.js import express and dotenv
+    this the code:
+        dotenv.config();
+        const app = express();
+        const PORT = process.env.PORT || 5000;
+        app.listen(PORT, () => {
+            console.log("Server is running on http://localhost" + PORT);
+        });
+6. 
