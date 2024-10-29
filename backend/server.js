@@ -14,6 +14,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 // console.log(process.env.PORT);
 
+app.use(express.json()); // this allows you to parse body of the request (POSTMAN)
+
 // authentification
 app.use("/api/auth", authRoutes); // bacanya ketika kita masukan localhost:5000/api/auth, /signup akan pindah kesana (auth.route.js)
 

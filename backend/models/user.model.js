@@ -41,8 +41,6 @@ const userSchema = new mongoose.Schema({
 }
 );
 
-const User = mongoose.model("User", userSchema);
-
 // pre-save hook to hash password before saving to the database
 userSchema.pre("save", async function(next){
     if(!this.isModified("password")) return next();
@@ -61,5 +59,8 @@ userSchema.pre("save", async function(next){
 userSchema.methods.comparePassword = async function(password){
     return bcrypt.compare(password, this.password);
 }
+
+// should be on final line, when u pass it to middle it will not work cause the userSchema is not modified yet
+const User = mongoose.model("User", userSchema);
 
 export default User;

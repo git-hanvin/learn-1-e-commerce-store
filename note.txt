@@ -39,3 +39,9 @@ STARTS WITH BACKEND
 8. Make user model
     make userSchema for cust: name, email, pass (also hushing the password)
 
+9. Testing the func working or not using POSTMAN
+    a. changes all the func on auth.route to POST method
+    b. test if the hash password woking or not
+
+10. Make access token and refresh token (authentification) use upstash
+    a. make a new one -> connect to database copy from node and make a new file name redis
