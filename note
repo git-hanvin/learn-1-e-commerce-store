@@ -3,12 +3,14 @@ STARTS WITH BACKEND
 1. npm init -y (package.json)
 2. npm i express dotenv mongoose jsonwebtoken stripe cloudinary cookie-parser bcryptjs ioredis
 3. npm i nodemon -D
+
 4. on package.json changes:
     a. the main to backend/server.js
     b. changes the script to:
         "dev": "nodemon backend/server.js" (this will restarting the file whenever you have some changes)
         "start": "node backend/server.js"
     c. add | "type": "module",
+
 5. to start the server just make a .env file then on server.js import express and dotenv
     this the code:
         dotenv.config();
@@ -17,6 +19,7 @@ STARTS WITH BACKEND
         app.listen(PORT, () => {
             console.log("Server is running on http://localhost" + PORT);
         });
+
 6. Make authentification
     a. base code for router:
         import express from "express";
@@ -26,3 +29,13 @@ STARTS WITH BACKEND
         just copy paste from the func that on auth.route.js
         then back to auth.route.js then insert the name of const on that file
         and dont forget to add .js in the end of import on controller
+
+7. Connect to database mongoose
+    a. make a new database -> make a new cluster then copy the password -> copy the string and paste it to .env and dont forget to replace the password and after "mongodb.net /(databasename)?"
+    b. make a folder name lib then make a file name db.js means database and base code is on db.js
+    c. add a code on server.js and connectDB() dan import connectDB from lib db.js
+    d. on website mongoDB go network access then add IP ADDRESS -> allow access from anywhere -> confirm
+
+8. Make user model
+    make userSchema for cust: name, email, pass (also hushing the password)
+
