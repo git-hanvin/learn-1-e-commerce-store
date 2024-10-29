@@ -44,4 +44,11 @@ STARTS WITH BACKEND
     b. test if the hash password woking or not
 
 10. Make access token and refresh token (authentification) use upstash
-    a. make a new one -> connect to database copy from node and make a new file name redis
+    a. make a new one -> connect to database copy from node and make a new file name redis.js
+    b. setup the refresh token and access token then make authentification
+    c. update res.status password dihilangkan
+    d. bisa cek udah jalan cookie dan refreshtoken, accesstoken dari POSTMAN nya
+
+11. SETUP untuk logout
+    a. make a func that if user want to logout they req the refresh token from cookie to delete it from redis
+    
