@@ -5,11 +5,11 @@ STARTS WITH BACKEND
 3. npm i nodemon -D
 
 4. on package.json changes:
-    a. the main to backend/server.js
+    a. the main to backend/server.js (because we want to make the backend first)
     b. changes the script to:
         "dev": "nodemon backend/server.js" (this will restarting the file whenever you have some changes)
         "start": "node backend/server.js"
-    c. add | "type": "module",
+    c. add some line -> "type": "module",
 
 5. to start the server just make a .env file then on server.js import express and dotenv
     this the code:
@@ -19,6 +19,9 @@ STARTS WITH BACKEND
         app.listen(PORT, () => {
             console.log("Server is running on http://localhost" + PORT);
         });
+    
+    .env:
+        PORT = 5000
 
 6. Make authentification
     a. base code for router:
@@ -26,13 +29,13 @@ STARTS WITH BACKEND
         const router = express.Router();
         export default router
     b. base code for controller:
-        just copy paste from the func that on auth.route.js
-        then back to auth.route.js then insert the name of const on that file
-        and dont forget to add .js in the end of import on controller
+        just copy paste from the func that on route
+        and dont forget to add .js in the end of import on route
+        and on controller make a variable first, pe: export const signup = (func that u copy from route)
 
 7. Connect to database mongoose
     a. make a new database -> make a new cluster then copy the password -> copy the string and paste it to .env and dont forget to replace the password and after "mongodb.net /(databasename)?"
-    b. make a folder name lib then make a file name db.js means database and base code is on db.js
+    b. make a folder name lib then make a file name db.js and base code is on db.js
     c. add a code on server.js and connectDB() dan import connectDB from lib db.js
     d. on website mongoDB go network access then add IP ADDRESS -> allow access from anywhere -> confirm
 
@@ -49,6 +52,16 @@ STARTS WITH BACKEND
     c. update res.status password dihilangkan
     d. bisa cek udah jalan cookie dan refreshtoken, accesstoken dari POSTMAN nya
 
-11. SETUP untuk logout
-    a. make a func that if user want to logout they req the refresh token from cookie to delete it from redis
-    
+11. SETUP for logout, login and refreshToken
+    a. for logout = make a func that if user want to logout they req the refresh token from cookie to delete it from redis
+    b. for login = enter email n pass, then check on db to see if this acc alr exist or not, if true then will give accesstoken n refreshToken
+    c. for refreshToken = make a func for refreshToken
+
+12. Make a product
+    a. build a new  product model, route, and controller -> add new authentification on server.js
+    b. make a protecrRoute, adminRoute, and getAllProducts (only for admin)
+    c. make a getFeaturedProducts and createProduct (only for admin), and for createProduct we need to import image which we use cloudinary
+    cloudinary step:
+        1. on left panel click on programmable media and copy cloud name, then paste it on .env | make another api key and api secret
+        2. on setting theres a api key and api secret just copy that
+    d. make a deleteProducts func (admin only) 

@@ -86,10 +86,6 @@ export const login = async (req, res) =>{
         console.log("Error in login controller", error.message);
         res.status(500).json({message: error.message});
     }
-    
-    
-    
-    
     // res.send("login route called");
 };
 
@@ -148,3 +144,6 @@ export const refreshToken = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     }
 }
+
+// TODO implement get profile later
+// export const getProfile = async (req, res) => {}

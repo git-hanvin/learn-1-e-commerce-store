@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser"; // for auth.controller so we can req t
 
 // routes
 import authRoutes from "./routes/auth.route.js";
+import productRoutes from "./routes/product.route.js";
 
 // database
 import { connectDB } from "./lib/db.js";
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 // authentification
 app.use("/api/auth", authRoutes); // bacanya ketika kita masukan localhost:5000/api/auth, /signup akan pindah kesana (auth.route.js)
+app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
     console.log("Server is running on http://localhost" + PORT);
