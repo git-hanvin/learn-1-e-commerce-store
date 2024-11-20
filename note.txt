@@ -64,4 +64,7 @@ STARTS WITH BACKEND
     cloudinary step:
         1. on left panel click on programmable media and copy cloud name, then paste it on .env | make another api key and api secret
         2. on setting theres a api key and api secret just copy that
-    d. make a deleteProducts func (admin only) 
+    d. make a deleteProducts func (admin only)
+
+13. Make a cart page
+    a. make a new route, controller, then add the func to add, removeAll, get and update the cart
