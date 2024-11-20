@@ -127,3 +127,33 @@ export const getProductsByCategory = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     }
 };
+
+export const toggleFeaturedProduct = async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        if(product) {
+            product.isFeatured = !product.isFeatured;
+            const updatedProduct = await product.save();
+            // update cache
+            await updateFeaturedProductsCache();
+            res.json(updatedProduct);
+        } else {
+            res.status(404).json({ message: "Product not found" });
+        }
+    } catch (error) {
+        console.log("Error in toggleFeaturedProduct controller", error.message);
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
+};
+
+async function updateFeaturedProductsCache() {
+    try {
+        // if not in redis, fetch from mongodb
+        // .lean() is gonna return a plain javascript object instead of mongodb document
+        // which is good for performance
+        const featuredProducts = await Product.find({ isFeatured: true }).lean();
+        await redis.set("featured_products", JSON.stringify(featuredProducts));
+    } catch (error) {
+        console.log("Error in update cache function")
+    }
+}
